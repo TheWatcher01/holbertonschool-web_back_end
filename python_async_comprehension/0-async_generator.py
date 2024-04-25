@@ -8,11 +8,12 @@ Description: This module contains an asynchronous generator function that
 yields a random number between 0 and 10, ten times.
 """
 
+from typing import AsyncGenerator
 import asyncio
 import random
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     Asynchronous generator function that yields a random number between
     0 and 10.
