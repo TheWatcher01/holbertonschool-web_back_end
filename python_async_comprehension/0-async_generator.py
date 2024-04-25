@@ -22,4 +22,4 @@ async def async_generator():
     """
     for _ in range(10):  # Loop runs ten times
         await asyncio.sleep(1)  # Pauses execution for one second
-        yield random.uniform(0, 10)  # Yields a random number between 0 and 10
+        yield random(0, 10)  # Yields a random number between 0 and 10
