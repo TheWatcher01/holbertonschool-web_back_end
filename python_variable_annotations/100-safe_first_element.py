@@ -8,10 +8,10 @@ Description: Module for safely getting first element of sequence with
 type annotations.
 """
 
-from typing import Sequence, Any, Union
+from typing import Sequence, Any, Optional
 
 
-def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
+def safe_first_element(lst: Sequence[Any]) -> Optional[Any]:
     """
     Safely returns first element of sequence, or None if sequence is empty.
 
