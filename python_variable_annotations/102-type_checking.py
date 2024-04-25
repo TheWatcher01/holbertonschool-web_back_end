@@ -7,19 +7,32 @@ Date: 2024-04-22
 Description: Module for demonstrating type checking with MyPy.
 """
 
-from typing import List, Tuple
+from typing import Tuple, List
 
 
-def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List[int]:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
-    Zoom array by a factor of two.
+    Zooms in on a list.
 
-    Args:
-    lst (Tuple[int, ...]): Tuple of integers to zoom.
-    factor (int): Factor to zoom by. Defaults to 2.
+    Function takes tuple and an integer factor. It returns a list that
+    contains each item in the tuple repeated factor times.
+
+    Parameters:
+    lst (Tuple): The tuple to zoom in on.
+    factor (int): The number of times to repeat each item. Defaults to 2.
+
+    Returns:
+    List: The zoomed in list.
     """
-    zoomed_in: List[int] = [
+    zoomed_in: List = [
         item for item in lst
-        for _ in range(factor)
+        for i in range(factor)
     ]
     return zoomed_in
+
+
+array = (12, 72, 91)
+
+zoom_2x = zoom_array(array)
+
+zoom_3x = zoom_array(array, 3)
