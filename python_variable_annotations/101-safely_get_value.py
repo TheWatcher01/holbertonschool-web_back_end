@@ -8,20 +8,20 @@ Description: Module for getting values from mapping with advanced type
 annotations.
 """
 
-from typing import Mapping, TypeVar, Any, Optional
+from typing import Mapping, TypeVar, Any, Union, Optional
 
 T = TypeVar('T')  # Declare type variable
 
 
-def safely_get_value(dct: Mapping[Any, T], key: Any,
-                     default: Optional[T] = None) -> Optional[T]:
+def safely_get_value(dct: Mapping, key: Any, default:
+                     Union[T, None] = None) -> Union[Any, T]:
     """
     Get value from dictionary by key with a default if the key does not exist.
 
     Args:
-    dct (Mapping[Any, T]): Dictionary to get the value from.
+    dct (Mapping): Dictionary to get the value from.
     key (Any): Key to look for in the dictionary.
-    default (Optional[T]): Optional default value to return if key does not
+    default (Union[T, None]): Optional default value to return if key does not
     exist. Defaults to None.
     """
     return dct.get(key, default)
