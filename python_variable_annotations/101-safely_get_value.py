@@ -8,7 +8,7 @@ Description: Module for getting values from mapping with advanced type
 annotations.
 """
 
-from typing import Mapping, TypeVar, Any, Union, Optional
+from typing import Mapping, TypeVar, Any, Union
 
 T = TypeVar('T')  # Declare type variable
 
@@ -24,4 +24,7 @@ def safely_get_value(dct: Mapping, key: Any, default:
     default (Union[T, None]): Optional default value to return if key does not
     exist. Defaults to None.
     """
-    return dct.get(key, default)
+    if key in dct:
+        return dct[key]
+    else:
+        return default
