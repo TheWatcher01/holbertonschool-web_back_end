@@ -15,7 +15,7 @@ import time
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
-async def measure_runtime():
+async def measure_runtime() -> float:
     """
     Asynchronous function that measure runtime of async_comprehension function
 
