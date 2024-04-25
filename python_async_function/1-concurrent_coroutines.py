@@ -28,8 +28,10 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     Returns:
         List[float]: The actual delays in seconds that the function paused for.
     """
-    tasks = [(i, wait_random(max_delay)) for i in range(n)]  # Create task list
-    delays = {}  # Init empty dict to store delays
-    for i, task in tasks:  # Iterate over tasks
-        delays[i] = await task  # Run task and store delay
-    return [delays[i] for i in range(n)]  # Return delays in order of tasks
+    tasks = [wait_random(max_delay)
+             for _ in range(n)]  # Create a list of tasks
+    delays = []
+    for task in asyncio.as_completed(tasks):
+        delay = await task
+        delays.append(delay)
+    return delays

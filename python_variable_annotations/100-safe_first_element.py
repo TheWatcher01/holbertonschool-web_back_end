@@ -16,7 +16,7 @@ def safe_first_element(lst: Sequence[Any]) -> Optional[Any]:
     Safely returns first element of sequence, or None if sequence is empty.
 
     Args:
-    lst (Sequence[Any]): Sequence of elements from wich to get first element.
+    lst (Sequence[Any]): Sequence of elements from which to get first element.
 
     Returns:
     Optional[Any]: First element of sequence, or None if sequence is empty.
