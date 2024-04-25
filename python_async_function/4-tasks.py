@@ -8,27 +8,29 @@ Description: This module creates a task that waits for a random delay.
 """
 
 import asyncio
-
+from typing import List
 
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> list:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
-    Create a task that waits for a random delay n times.
+    Pause the execution of the coroutine for a random delay n times.
 
-    This function creates a task that waits for a random delay between 0 and
-    max_delay seconds, n times, then returns the list of delays.
+    This function is a coroutine that will pause its execution for a random
+    delay between 0 and max_delay seconds, n times, then return the delays.
 
     Args:
-        n (int): The number of delays to wait for.
+        n (int): The number of delays to pause for.
         max_delay (int): The maximum delay in seconds.
 
     Returns:
-        list: The list of delays in seconds that the function waited for.
+        List[float]: The actual delays in seconds that the function paused for.
     """
-    tasks = [task_wait_random(max_delay) for _ in range(n)]  # Create task list
-    completed_delays = []
-    for task in asyncio.as_completed(tasks):  # Wait for tasks to complete
-        completed_delays.append(await task)  # Append the completed delay
-    return completed_delays  # Return the list of completed delays
+    tasks = [task_wait_random(max_delay)
+             for _ in range(n)]  # Create a list of tasks
+    delays = []
+    for task in asyncio.as_completed(tasks):
+        delay = await task
+        delays.append(delay)
+    return delays
