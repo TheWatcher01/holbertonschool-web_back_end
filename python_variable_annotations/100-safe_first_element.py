@@ -21,4 +21,7 @@ def safe_first_element(lst: Sequence[Any]) -> Optional[Any]:
     Returns:
     Optional[Any]: First element of sequence, or None if sequence is empty.
     """
-    return lst[0] if lst else None
+    if lst:
+        return lst[0]
+    else:
+        return None
