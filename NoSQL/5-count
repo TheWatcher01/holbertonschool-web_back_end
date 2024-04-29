@@ -1,0 +1,2 @@
+// That's script that displays the number of documents in the collection school
+print(db.school.find().count());
