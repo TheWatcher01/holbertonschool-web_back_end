@@ -7,12 +7,8 @@ Description: This module contains a function that changes all topics
 of a school document based on the name
 """
 
-from typing import List
-from pymongo.collection import Collection
 
-
-def update_topics(mongo_collection:
-                  Collection, name: str, topics: List[str]) -> None:
+def update_topics(mongo_collection, name, topics):
     """
     Changes all topics of a school document based on the name.
 
