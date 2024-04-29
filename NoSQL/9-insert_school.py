@@ -7,8 +7,11 @@ Description: This module contains a function that inserts a new document
 into a MongoDB collection based on kwargs.
 """
 
+from typing import Any
+from pymongo.collection import Collection
 
-def insert_school(mongo_collection, **kwargs):
+
+def insert_school(mongo_collection: Collection, **kwargs: Any) -> Any:
     """
     Inserts a new document into a MongoDB collection based on kwargs.
 
@@ -19,5 +22,5 @@ def insert_school(mongo_collection, **kwargs):
     Returns:
     - The _id of the new document
     """
-    new_doc = mongo_collection.insert(kwargs)
+    new_doc = mongo_collection.insert_one(kwargs)
     return new_doc.inserted_id
