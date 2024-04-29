@@ -4,7 +4,7 @@ Module: 10-update_topics.py
 Author: TheWatcher01
 Date: 2024-04-29
 Description: This module contains a function that changes all topics
-of a school document based on the name
+of a school document based on the name.
 """
 
 
