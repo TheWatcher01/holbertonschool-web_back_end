@@ -39,7 +39,7 @@ class Server:
                 reader = csv.reader(f)
                 # Read the dataset from the CSV file
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]
+            self.__dataset = dataset[1:]  # Skip header
 
         # Return the cached dataset
         return self.__dataset
