@@ -9,7 +9,7 @@ of popular baby names. It includes methods to access the dataset, retrieve
 a specific page of data, and provide hypermedia pagination.
 """
 
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple
 import csv
 
 
@@ -95,7 +95,7 @@ class Server:
             # If start index is not within dataset, return an empty list
             return []
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+    def get_hyper(self, page: int = 1, page_size: int = 10):
         """
         Retrieves the requested page of the dataset with hypermedia pagination.
 
@@ -104,7 +104,7 @@ class Server:
         page_size (int): The number of items per page.
 
         Returns:
-        Dict[str, any]: Dictionary containing page size, page number, data,
+        Dictionary containing page size, page number, data,
         next page number, previous page number, and total number of pages.
         """
         # Assert that the page and page size are valid
