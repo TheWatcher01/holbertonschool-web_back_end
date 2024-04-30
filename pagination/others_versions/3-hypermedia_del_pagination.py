@@ -56,10 +56,10 @@ class Server:
         # If the indexed dataset is not loaded, load it
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            full_dataset = dataset
+            truncated_dataset = dataset
             # Create indexed dataset where each key is index starting from 0
             self.__indexed_dataset = {
-                i: full_dataset[i] for i in range(len(full_dataset))
+                i: truncated_dataset[i] for i in range(len(truncated_dataset))
             }
         # Return the cached indexed dataset
         return self.__indexed_dataset
