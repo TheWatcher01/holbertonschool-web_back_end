@@ -26,7 +26,8 @@ def top_students(mongo_collection):
             "$unwind": "$topics"
         },
         {
-            # Group documents by '_id', preserving the 'name' field and calculating the average score
+            # Group documents by '_id', preserving 'name' field and
+            # calculating average score
             "$group": {
                 "_id": "$_id",
                 "name": {"$first": "$name"},
