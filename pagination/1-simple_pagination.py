@@ -9,11 +9,11 @@ of popular baby names. It also includes a helper function to calculate
 the start and end indices for a given page with a specific page size.
 """
 
-from typing import List
+from typing import List, Tuple
 import csv
 
 
-def index_range(page: int, page_size: int) -> tuple:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Determines the start and end indices for a given page with a specific
     page size.
@@ -23,7 +23,7 @@ def index_range(page: int, page_size: int) -> tuple:
     page_size (int): The number of items per page.
 
     Returns:
-    tuple: A tuple containing the start and end indices for the items on
+    Tuple: A Tuple containing the start and end indices for the items on
     the page.
     """
     # Calculate the start index
