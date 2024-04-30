@@ -27,7 +27,7 @@ if __name__ == "__main__":
     print("Methods:")
     # Iterate over each HTTP method
     for method in ["GET", "POST", "PUT", "PATCH", "DELETE"]:
-        # Use the count_documents method of the collection to count the number of documents
+        # Use count_documents method of collection to count number of documents
         # where the 'method' field matches the current HTTP method
         count = logs_collection.count_documents({"method": method})
         # Print the HTTP method and the count
