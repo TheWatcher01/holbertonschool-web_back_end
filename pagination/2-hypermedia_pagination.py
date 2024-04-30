@@ -9,11 +9,11 @@ of popular baby names. It includes methods to access the dataset, retrieve
 a specific page of data, and provide hypermedia pagination.
 """
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Any
 import csv
 
 
-def index_range(page: int, page_size: int) -> Tuple:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Determines the start and end indices for a given page with a specific
     page size.
@@ -59,9 +59,7 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 # Read the dataset from the CSV file
-                dataset = [row for row in reader]
-            # Cache the dataset
-            self.__dataset = dataset[1:]
+                self.__dataset = [row for row in reader][1:]
 
         # Return the cached dataset
         return self.__dataset
@@ -87,6 +85,9 @@ class Server:
         # Get the dataset
         dataset = self.dataset()
 
+        # Ensure end_index does not exceed dataset length
+        end_index = min(end_index, len(dataset))
+
         # If the start index is within the dataset, return the page
         if start_index < len(dataset):
             return dataset[start_index:end_index]
@@ -94,7 +95,7 @@ class Server:
             # If start index is not within dataset, return an empty list
             return []
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
         Retrieves the requested page of the dataset with hypermedia pagination.
 
@@ -103,7 +104,7 @@ class Server:
         page_size (int): The number of items per page.
 
         Returns:
-        dict: A dictionary containing the page size, page number, data,
+        Dict[str, any]: Dictionary containing page size, page number, data,
         next page number, previous page number, and total number of pages.
         """
         # Assert that the page and page size are valid
