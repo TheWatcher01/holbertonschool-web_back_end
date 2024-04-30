@@ -26,7 +26,9 @@ def index_range(page: int, page_size: int) -> tuple:
     tuple: A tuple containing the start and end indices for the items on
     the page.
     """
+    # Calculate the start index
     start_index = (page - 1) * page_size
+    # Calculate the end index
     end_index = page * page_size
     return (start_index, end_index)
 
@@ -36,9 +38,11 @@ class Server:
     Server class to paginate a database of popular baby names. It includes
     methods to access the dataset and retrieve a specific page of data.
     """
+    # Define the data file
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        # Initialize the dataset to None
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -49,12 +53,16 @@ class Server:
         Returns:
         List[List]: The dataset.
         """
+        # If the dataset is not loaded, load it
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
+                # Read the dataset from the CSV file
                 dataset = [row for row in reader]
+            # Cache the dataset
             self.__dataset = dataset[1:]
 
+        # Return the cached dataset
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
@@ -68,14 +76,19 @@ class Server:
         Returns:
         List[List]: The dataset page.
         """
+        # Assert that the page and page size are valid
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
+        # Get the start and end indices for the page
         start_index, end_index = index_range(page, page_size)
 
+        # Get the dataset
         dataset = self.dataset()
 
+        # If the start index is within the dataset, return the page
         if start_index < len(dataset):
             return dataset[start_index:end_index]
         else:
+            # If start index is not within dataset, return an empty list
             return []
