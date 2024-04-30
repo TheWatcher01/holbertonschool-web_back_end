@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """
 File: 2-hypermedia_pagination.py
@@ -9,7 +9,7 @@ of popular baby names. It includes methods to access the dataset, retrieve
 a specific page of data, and provide hypermedia pagination.
 """
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Any
 import csv
 
 
@@ -46,7 +46,7 @@ class Server:
         # Initialize the dataset to None
         self.__dataset = None
 
-    def dataset(self) -> List[List]:
+    def dataset(self) -> List[List[str]]:
         """
         Returns the cached dataset. If the dataset is not loaded, it loads
         the dataset from the CSV file and caches it.
@@ -64,7 +64,7 @@ class Server:
         # Return the cached dataset
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List[str]]:
         """
         Retrieves the requested page of the dataset.
 
@@ -95,7 +95,7 @@ class Server:
             # If start index is not within dataset, return an empty list
             return []
 
-    def get_hyper(self, page: int = 1, page_size: int = 10):
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
         Retrieves the requested page of the dataset with hypermedia pagination.
 
