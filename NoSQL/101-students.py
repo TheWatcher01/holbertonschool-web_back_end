@@ -39,5 +39,7 @@ def top_students(mongo_collection):
             "$sort": {"averageScore": -1}
         }
     ]
-    # Execute the aggregation pipeline and return the result as a list
-    return list(mongo_collection.aggregate(pipeline))
+    # Execute the aggregation pipeline
+    result = mongo_collection.aggregate(pipeline)
+    # Return the result as a list
+    return list(result)
