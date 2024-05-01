@@ -1,3 +1,2 @@
-// That's script that lists all documents with name starting by Holberton 
-// in collection school
+// That's script that lists all documents with name starting by Holberton in collection school
 db.school.find({name: /^Holberton/i}).forEach(printjson);
