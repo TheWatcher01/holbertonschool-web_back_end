@@ -1,2 +1,2 @@
-// That's script that lists all documents with name starting by Holberton in collection school
-db.school.find({name: /^Holberton/i}).forEach(printjson);
+// That's script that lists all documents with name starting by Holberton in collection school using regex
+mongo my_db --eval 'db.school.find({name: /^Holberton/i}).forEach(printjson)'
