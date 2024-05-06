@@ -4,7 +4,7 @@ File: 3-hypermedia_del_pagination.py
 Author: TheWatcher01
 Date: 2024-04-30
 Description: This module contains a Server class that implements
-deletion-resilient hypermedia pagination on database of popular baby names.
+deletion-resilient hypermedia pagination on a database of popular baby names.
 """
 
 import csv
@@ -78,23 +78,31 @@ class Server:
         The 'next_index' field contains index for next page if it exists,
         otherwise it is None.
         """
-        # If index is None, set it to 0
-        if index is None:
+        # If index is None or not an integer, set it to 0.
+        if index is None or not isinstance(index, int):
             index = 0
+        # If page_size is None or not an integer, set it to 10.
+        if page_size is None or not isinstance(page_size, int):
+            page_size = 10
         # Assert that the index is valid
         assert 0 <= index < len(self.__indexed_dataset)
 
         data = []
         current_index = index
 
-        # While data size is less than page size & current index is in
-        # indexed dataset
-        while (len(data) < page_size and
-                current_index in self.__indexed_dataset):
-            # Append the data at the current index to the data list
-            data.append(self.__indexed_dataset[current_index])
-            # Increment the current index
-            current_index += 1
+        # While data size is less than page size
+        while len(data) < page_size:
+            # If current index does not exist in indexed dataset,
+            # increment index
+            while current_index not in self.__indexed_dataset and \
+                    current_index < len(self.__indexed_dataset):
+                current_index += 1
+            # If current index is still in indexed dataset, append data at
+            # current index to data list
+            if current_index in self.__indexed_dataset:
+                data.append(self.__indexed_dataset[current_index])
+                # Increment the current index
+                current_index += 1
 
         # Calculate the next index, if it exists
         next_index = current_index if len(data) == page_size else None
