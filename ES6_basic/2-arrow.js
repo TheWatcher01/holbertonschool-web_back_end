@@ -2,12 +2,12 @@
  * @file 2-arrow.js
  * @author TheWatcher01
  * @date 06-05-2024
- * @description: Demonstrates the use of arrow functions in JavaScript.
+ * @description Demonstrates the use of arrow functions in JavaScript.
  */
 
 /**
  * @function getNeighborhoodsList
- * @description: Function initializes a list of San Francisco neighborhoods and provides
+ * @description Function initializes a list of San Francisco neighborhoods and provides
  * a method to add new neighborhoods to the list. The method uses an arrow
  * function, which provides lexical binding of `this`.
  *
