@@ -1,5 +1,5 @@
 /**
- * @file 10-loops.js
+ * @file 10-loops_v2.js
  * @author TheWatcher01
  * @date 07-05-2024
  * @description This module exports a function that appends a string to each value in an array.
@@ -13,9 +13,9 @@
  * @returns {Array} A new array with the appended string added to each value.
  */
 export default function appendToEachArrayValue(array, appendString) {
-  const newArray = [...array];
-  for (const idx of array.keys()) {
-    newArray[idx] = appendString + newArray[idx];
+  const newArray = [];
+  for (const value of array) {
+    newArray.push(appendString + value);
   }
 
   return newArray;
