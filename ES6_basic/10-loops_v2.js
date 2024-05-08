@@ -12,10 +12,11 @@
  * @param {string} appendString - The string to append to each array value.
  * @returns {Array} A new array with the appended string added to each value.
  */
+
 export default function appendToEachArrayValue(array, appendString) {
-  const newArray = [];
-  for (const value of array) {
-    newArray.push(appendString + value);
+  const newArray = [...array];
+  for (const idx of array.keys()) {
+    newArray[idx] = appendString + newArray[idx];
   }
 
   return newArray;

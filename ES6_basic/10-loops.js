@@ -13,9 +13,9 @@
  * @returns {Array} A new array with the appended string added to each value.
  */
 export default function appendToEachArrayValue(array, appendString) {
-  const newArray = [...array];
-  for (const idx of array.keys()) {
-    newArray[idx] = appendString + newArray[idx];
+  const newArray = [];
+  for (const value of array) {
+    newArray.push(appendString + value);
   }
 
   return newArray;
