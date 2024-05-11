@@ -12,9 +12,9 @@
  * departments and provides method to retrieve the count of departments.
  *
  * @param {Object} employeesList - An object containing department names as keys and
- *                                 arrays of employee names as values.
+ * arrays of employee names as values.
  * @returns {Object} An object encapsulating a list of all employees segregated by departments and
- *  method to retrieve the count of departments.
+ * method to retrieve the count of departments.
  */
 export default function createReportObject(employeesList) {
   return {
