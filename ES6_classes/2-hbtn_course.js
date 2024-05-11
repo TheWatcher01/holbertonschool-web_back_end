@@ -21,30 +21,20 @@ export default class HolbertonCourse {
    * @throws {TypeError} - If the students is not an array of strings
    */
   constructor(name, length, students) {
-    this.name = name; // Utilize the setter to validate
-    this.length = length; // Utilize the setter to validate
-    this.students = students; // Utilize the setter to validate
-  }
-
-  // Private method to validate the name
-  _validateName(name) {
     if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
+      throw TypeError('Name must be a string');
     }
-  }
+    this._name = name;
 
-  // Private method to validate the length
-  _validateLength(length) {
     if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
+      throw TypeError('Length must be a number');
     }
-  }
+    this._length = length;
 
-  // Private method to validate the students array
-  _validateStudents(students) {
-    if (!Array.isArray(students) || students.some((student) => typeof student !== 'string')) {
-      throw new TypeError('Students must be an array of strings');
+    if (!Array.isArray(students) || students.every((student) => typeof student !== 'string')) {
+      throw TypeError('Students must be an array of strings');
     }
+    this._students = students;
   }
 
   get name() {
@@ -52,7 +42,9 @@ export default class HolbertonCourse {
   }
 
   set name(newName) {
-    this._validateName(newName);
+    if (typeof newName !== 'string') {
+      throw TypeError('Name must be a string');
+    }
     this._name = newName;
   }
 
@@ -61,7 +53,9 @@ export default class HolbertonCourse {
   }
 
   set length(newLength) {
-    this._validateLength(newLength);
+    if (typeof newLength !== 'number') {
+      throw TypeError('Length must be a number');
+    }
     this._length = newLength;
   }
 
@@ -70,7 +64,9 @@ export default class HolbertonCourse {
   }
 
   set students(newStudents) {
-    this._validateStudents(newStudents);
+    if (!Array.isArray(newStudents) || newStudents.every((student) => typeof student !== 'string')) {
+      throw TypeError('Students must be an array of strings');
+    }
     this._students = newStudents;
   }
 }
