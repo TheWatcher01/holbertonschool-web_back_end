@@ -26,6 +26,15 @@ export default class SkyHighBuilding extends Building {
 
   /**
    * @getter
+   * @description Get the square footage of the building.
+   * @return {number} The square footage.
+   */
+  get sqft() {
+    return this._sqft; // Access inherited protected property if needed
+  }
+
+  /**
+   * @getter
    * @description Get the number of floors in the building.
    * @return {number} The number of floors.
    */
@@ -35,7 +44,7 @@ export default class SkyHighBuilding extends Building {
 
   /**
    * @method evacuationWarningMessage
-   * @description Generate an evacuation warning message for building.
+   * @description Generate an evacuation warning message for the building.
    * @return {string} The evacuation warning message.
    */
   evacuationWarningMessage() {
