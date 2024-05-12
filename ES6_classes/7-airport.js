@@ -2,20 +2,17 @@
  * @file 7-airport.js
  * @author TheWatcher01
  * @date 12-05-2024
- * @description This file defines the Airport class with name and code properties.
+ * @description Defines the Airport class with name and code properties.
  */
 
 /**
  * @class Airport
- * @description A class representing an airport.
- * @property {string} name - The name of the airport.
- * @property {string} code - The code of the airport.
- * @method {string} toString - Convert the airport object to a string.
+ * @description Represents an airport with a name and a code.
  */
 export default class Airport {
   /**
-   * @constructs Airport
-   * @description Create an airport.
+   * @constructor
+   * @description Constructs an Airport instance.
    * @param {string} name - The name of the airport.
    * @param {string} code - The code of the airport.
    */
@@ -26,7 +23,7 @@ export default class Airport {
 
   /**
    * @getter name
-   * @description Get the name of the airport.
+   * @description Gets the name of the airport.
    * @return {string} The name of the airport.
    */
   get name() {
@@ -35,7 +32,7 @@ export default class Airport {
 
   /**
    * @getter code
-   * @description Get the code of the airport.
+   * @description Gets the code of the airport.
    * @return {string} The code of the airport.
    */
   get code() {
@@ -44,7 +41,7 @@ export default class Airport {
 
   /**
    * @setter name
-   * @description Set the name of the airport.
+   * @description Sets the name of the airport.
    * @param {string} name - The new name of the airport.
    */
   set name(name) {
@@ -53,7 +50,7 @@ export default class Airport {
 
   /**
    * @setter code
-   * @description Set the code of the airport.
+   * @description Sets the code of the airport.
    * @param {string} code - The new code of the airport.
    */
   set code(code) {
@@ -61,11 +58,20 @@ export default class Airport {
   }
 
   /**
+   * @getter Symbol.toStringTag
+   * @description Gets the string tag for the airport object.
+   * @return {string} The code of the airport.
+   */
+  get [Symbol.toStringTag]() {
+    return this._code;
+  }
+
+  /**
    * @method toString
-   * @description Convert the airport object to a string.
+   * @description Converts the airport object to a string.
    * @return {string} A string representing the airport.
    */
   toString() {
-    return `${this._name} (${this._code})`;
+    return `[object ${this._code}]`;
   }
 }
