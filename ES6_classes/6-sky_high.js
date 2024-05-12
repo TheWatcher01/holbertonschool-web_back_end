@@ -20,28 +20,17 @@ export default class SkyHighBuilding extends Building {
    * @param {number} floors - The number of floors in the building.
    */
   constructor(sqft, floors) {
-    super();
+    super(sqft); // Call the parent class constructor with sqft
     this._floors = floors;
-    this._sqft = sqft;
   }
 
   /**
    * @getter
    * @description Get the number of floors in the building.
-   * @return {number} The number of floors in the building.
+   * @return {number} The number of floors.
    */
   get floors() {
     return this._floors;
-  }
-
-  /**
-   * @getter sqft
-   * @description Get the square footage of the building.
-   * @return {number} The square footage of the building.
-   * @override Building
-   */
-  get sqft() {
-    return this._sqft;
   }
 
   /**
