@@ -14,7 +14,8 @@ export default class Building {
    * @constructor
    * @description Create a building.
    * @param {number} sqft - The square footage of the building.
-   * @throws {Error} Throws an error if a class extending Building does not override the evacuationWarningMessage method.
+   * @throws {Error} Throws error if class extending Building does not override
+   * evacuationWarningMessage method.
    */
   constructor(sqft) {
     this._sqft = sqft;
