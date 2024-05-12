@@ -43,15 +43,6 @@ export default class SkyHighBuilding extends Building {
   }
 
   /**
-   * @setter
-   * @description Set the number of floors in the building.
-   * @param {number} newFloors - The new number of floors.
-   */
-  set floors(newFloors) {
-    this._floors = newFloors;
-  }
-
-  /**
    * @method evacuationWarningMessage
    * @description Generate an evacuation warning message for the building.
    * @return {string} The evacuation warning message.
