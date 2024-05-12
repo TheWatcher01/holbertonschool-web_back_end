@@ -10,9 +10,6 @@
  * @description This class represents a currency.
  */
 export default class Currency {
-  #code;
-  #name;
-
   /**
    * @constructor
    * @description Create a currency.
@@ -20,8 +17,8 @@ export default class Currency {
    * @param {string} name - The currency name.
    */
   constructor(code, name) {
-    this.#code = code;
-    this.#name = name;
+    this._code = code;
+    this._name = name;
   }
 
   /**
@@ -30,7 +27,7 @@ export default class Currency {
    * @return {string} The currency code.
    */
   get code() {
-    return this.#code;
+    return this._code;
   }
 
   /**
@@ -39,7 +36,7 @@ export default class Currency {
    * @param {string} newCode - The new currency code.
    */
   set code(newCode) {
-    this.#code = newCode;
+    this._code = newCode;
   }
 
   /**
@@ -48,7 +45,7 @@ export default class Currency {
    * @return {string} The currency name.
    */
   get name() {
-    return this.#name;
+    return this._name;
   }
 
   /**
@@ -57,7 +54,7 @@ export default class Currency {
    * @param {string} newName - The new currency name.
    */
   set name(newName) {
-    this.#name = newName;
+    this._name = newName;
   }
 
   /**
@@ -66,7 +63,7 @@ export default class Currency {
    * @return {string} The full currency name and code.
    */
   displayFullCurrency() {
-    return `${this.#name} (${this.#code})`;
+    return `${this._name} (${this._code})`;
   }
 
   /**
