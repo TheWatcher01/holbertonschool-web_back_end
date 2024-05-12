@@ -42,6 +42,6 @@ export default class EVCar extends Car {
    * @return {Car} A new Car instance with the same properties as the original EVCar.
    */
   cloneCar() {
-    return new Car(this._brand, this._motor, this._color);
+    return new Car(this.constructor.Car);
   }
 }
