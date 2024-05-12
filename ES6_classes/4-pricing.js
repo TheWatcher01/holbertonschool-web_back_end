@@ -2,7 +2,7 @@
  * @file 4-pricing.js
  * @author TheWatcher01
  * @date 12-05-2024
- * @description Module exports Pricing class which represents price in specific currency.
+ * @description This module exports a Pricing class which represents a price in a specific currency.
  */
 
 import Currency from './3-currency';
@@ -79,5 +79,20 @@ export default class Pricing {
    */
   displayFullPrice() {
     return `${this.amount} ${this.currency.displayFullCurrency()}`;
+  }
+
+  /**
+   * @static convertPrice
+   * @description Convert an amount from one currency to another.
+   * @param {number} amount - The amount to convert.
+   * @param {number} conversionRate - Conversion rate from original currency to new currency.
+   * @throws {TypeError} - If amount or conversionRate is not a number.
+   * @return {number} The converted amount in the new currency.
+   */
+  static convertPrice(amount, conversionRate) {
+    if (typeof amount !== 'number' || typeof conversionRate !== 'number') {
+      throw new TypeError('Both amount and conversionRate must be numbers');
+    }
+    return amount * conversionRate;
   }
 }
