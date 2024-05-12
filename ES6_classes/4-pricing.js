@@ -2,7 +2,7 @@
  * @file 4-pricing.js
  * @author TheWatcher01
  * @date 12-05-2024
- * @description This module exports a Pricing class which represents a price in a specific currency.
+ * @description Module exports Pricing class which represents price in specific currency.
  */
 
 import Currency from './3-currency';
