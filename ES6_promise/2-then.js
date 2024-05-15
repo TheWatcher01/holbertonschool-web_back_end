@@ -25,6 +25,6 @@ export default function handleResponseFromAPI(promise) {
       };
     })
 
-    // Return a new Error object when the promise rejects
-    .catch(() => new Error('The promise was rejected'));
+    // Return a new empty Error object when the promise rejects
+    .catch(() => new Error());
 }
