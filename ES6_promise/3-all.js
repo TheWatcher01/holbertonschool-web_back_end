@@ -2,55 +2,30 @@
  * @file 3-all.js
  * @author TheWatcher01
  * @date 13-05-2024
- * @description
+ * @description This module contains a function that handles a profile signup.
  */
 
-/**
- * @file 8-hbtn_class.js
- * @author TheWatcher01
- * @date 12-05-2024
- * @description Defines the HolbertonClass with size and location properties.
- */
+// Import the necessary functions from the utils module
+import { uploadPhoto, createUser } from './utils';
 
 /**
- * @class HolbertonClass
- * @description Represents a HolbertonClass with a size and a location.
+ * @function handleProfileSignup
+ * @description Function handles profile signup by uploading photo and creating user concurrently.
+ * If both promises resolve, it logs photo body & user's first & last name.
+ * If either promise rejects, it logs message indicating that signup system is offline.
+ * @returns {Promise<void>} - Returns promise that either resolves with no value after logging
+ * photo body & user's first and last name, or rejects with no value after logging message
+ * indicating that signup system is offline.
  */
-export default class HolbertonClass {
-    /**
-     * @constructor
-     * @description Constructs a HolbertonClass instance.
-     * @param {number} size - The size of the HolbertonClass.
-     * @param {string} location - The location of the HolbertonClass.
-     * @throws {TypeError} If size is not a number or location is not a string.
-     */
-    constructor(size, location) {
-      if (typeof size !== 'number') {
-        throw new TypeError('Size must be a number');
-      }
-      if (typeof location !== 'string') {
-        throw new TypeError('Location must be a string');
-      }
-  
-      this._size = size;
-      this._location = location;
-    }
-  
-    /**
-     * @method valueOf
- * @description Gets the value of the HolbertonClass.
-     * @return {number} The size of the HolbertonClass.
-     */
-    valueOf() {
-      return this._size;
-    }
-  
-    /**
-     * @method toString
-     * @description Converts the HolbertonClass object to a string.
-     * @return {string} The location of the HolbertonClass.
-     */
-    toString() {
-      return this._location;
-    }
-  }
+export default function handleProfileSignup() {
+  // Return a promise that resolves when both the uploadPhoto and createUser promises have resolved
+  return Promise.all([uploadPhoto(), createUser()])
+    .then(([photo, user]) => {
+      // Log the photo body and user's first and last name when both promises resolve
+      console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+    })
+    .catch(() => {
+      // Log a message indicating that the signup system is offline when either promise rejects
+      console.log('Signup system offline');
+    });
+}
