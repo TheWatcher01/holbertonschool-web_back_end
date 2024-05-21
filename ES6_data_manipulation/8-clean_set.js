@@ -6,5 +6,22 @@
  * with specific string
  */
 
-export default function cleanSet() {
+export default function cleanSet(set, startString) {
+  if (!(set instanceof Set) || typeof startString !== 'string') {
+    return '';
+  }
+
+  if (startString === '') {
+    return [...set].join('-');
+  }
+
+  const result = [];
+
+  set.forEach((value) => {
+    if (value.startsWith(startString)) {
+      result.push(value.slice(startString.length));
+    }
+  });
+
+  return result.join('-');
 }
