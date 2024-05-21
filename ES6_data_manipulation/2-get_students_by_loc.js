@@ -5,5 +5,6 @@
  * @description This module contains a function that returns a list of students by location.
  */
 
-export default function getStudentsByLocation() {
+export default function getStudentsByLocation(students, city) {
+  return students.filter((student) => student.location === city);
 }
