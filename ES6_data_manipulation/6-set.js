@@ -5,5 +5,6 @@
  * @description This module contains a function that returns a set of students from an array.
  */
 
-export default function setFromArray() {
+export default function setFromArray(array) {
+  return new Set(array);
 }
