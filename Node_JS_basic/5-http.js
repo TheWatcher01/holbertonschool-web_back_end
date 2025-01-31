@@ -8,11 +8,6 @@
 const http = require('http');
 const fs = require('fs').promises;
 
-/**
- * Counts students in different fields from a database file
- * @param {string} path - Path to the database file
- * @returns {Promise<string>} - Formatted string with student counts and lists
- */
 async function countStudents(path) {
   try {
     // Read and process the database file
@@ -55,18 +50,16 @@ const app = http.createServer(async (req, res) => {
       break;
 
     case '/students':
+      // Always start with the introduction text
+      res.write('This is the list of our students\n');
+
       try {
         // Get database path from command line arguments
         const databasePath = process.argv[2];
-        if (!databasePath) {
-          throw new Error('Cannot load the database');
-        }
-
-        // Combine introduction text with student data
-        const introText = 'This is the list of our students\n';
         const studentData = await countStudents(databasePath);
-        res.end(`${introText}${studentData}`);
+        res.end(studentData);
       } catch (error) {
+        // When there's an error, append it after the introduction
         res.end(error.message);
       }
       break;
