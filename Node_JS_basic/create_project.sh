@@ -10,10 +10,10 @@ mkdir -p "$FULL_SERVER_DIR" "$CONTROLLERS_DIR" "$ROUTES_DIR"
 
 # Creating main project files
 touch "0-console.js" "0-main.js"
-touch "1-stdin.js" "1-main.js"
+touch "1-stdin.js"
 touch "2-read_file.js" "2-main_0.js" "2-main_1.js"
 touch "3-read_file_async.js" "3-main_0.js" "3-main_1.js"
-touch "4-http.js" "4-main.js"
+touch "4-http.js""
 touch "5-http.js" "5-main.js"
 touch "6-http_express.js" "6-main.js"
 touch "7-http_express.js" "7-main.js"
