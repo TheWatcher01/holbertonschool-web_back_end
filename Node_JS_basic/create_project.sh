@@ -14,9 +14,9 @@ touch "1-stdin.js"
 touch "2-read_file.js" "2-main_0.js" "2-main_1.js"
 touch "3-read_file_async.js" "3-main_0.js" "3-main_1.js"
 touch "4-http.js""
-touch "5-http.js" "5-main.js"
-touch "6-http_express.js" "6-main.js"
-touch "7-http_express.js" "7-main.js"
+touch "5-http.js"
+touch "6-http_express.js"
+touch "7-http_express.js"
 
 # Creating files for the structured server
 touch "$FULL_SERVER_DIR/utils.js" "$FULL_SERVER_DIR/utils.test.js"
